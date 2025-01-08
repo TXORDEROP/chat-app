@@ -1,13 +1,328 @@
-body {
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #ece5dd;
+  color: #333;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Home Page */
+.home__container {
+  width: 100%;
+  height: 100%;
+  background-image: url("https://your-image-url.com"); /* Background image for the homepage */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+/* Emoji Button */
+.emoji__btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #128c7e;
+  z-index: 2;
+}
+
+/* Emoji Picker Popup */
+.emoji__picker {
+  position: absolute;
+  bottom: 50px;
+  left: 0;
+  z-index: 1000;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.home__content {
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for contrast */
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.home__header {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.home__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.input__container {
+  position: relative;
+  width: 300px;
+  margin-bottom: 20px;
+}
+
+.input__icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #128c7e;
+}
+
+.home__input {
+  padding: 12px 15px 12px 35px; /* Added padding to the left for the icon */
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.home__input:focus {
+  outline: none;
+  border-color: #128c7e;
+}
+
+.home__cta {
+  width: 150px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #128c7e;
+  color: #fff;
+  border-radius: 8px;
+  outline: none;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.home__cta:hover {
+  background-color: #075e54;
+}
+
+/* Chat Layout */
+.chat {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  background-color: #f7f7f7;
+}
+
+/* Sidebar */
+.chat__sidebar {
+  height: 100%;
+  background-color: #f9f5eb;
+  flex: 0.2;
+  padding: 20px;
+  border-right: 1px solid #fdfdfd;
+}
+
+.chat__header {
+  margin: 30px 0 20px 0;
+}
+
+.chat__users > * {
+  margin-bottom: 10px;
+  color: #607eaa;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.chat__users > *:hover {
+  color: #128c7e;
+}
+
+/* Chat Main */
+.chat__main {
+  height: 100%;
+  flex: 0.8;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat__mainHeader {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #f9f5eb;
+  border-bottom: 1px solid #ddd;
+}
+
+.leaveChat__btn {
+  padding: 12px;
+  width: 150px;
+  border: none;
+  background-color: #d1512d;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.leaveChat__btn:hover {
+  background-color: #c0392b;
+}
+
+/* Message Container */
+.message__container {
+  width: 100%;
+  height: 80vh;
+  background-color: #fff;
+  padding: 20px;
+  overflow-y: auto;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+}
+
+.message__chats {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  transition: opacity 0.3s ease;
+}
+
+.message__sender,
+.message__recipient {
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  margin-bottom: 8px;
+  word-wrap: break-word;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message__sender {
+  background-color: #dcf8c6;
+  align-self: flex-end;
+}
+
+.message__recipient {
+  background-color: #f5ccc2;
+}
+
+.message__status {
+  font-size: 13px;
+  font-style: italic;
+  color: #888;
+  text-align: center;
+  opacity: 0.7;
+}
+
+/* Chat Footer Styling */
+.chat__footer {
+  padding: 10px;
+  background-color: #f9f5eb;
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Form and Message Input Styling */
+.form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.message {
+  width: 80%;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sendBtn {
+  width: 150px;
+  background-color: #128c7e;
+  padding: 12px;
+  border: none;
+  outline: none;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.sendBtn:hover {
+  background-color: #075e54;
+}
+/* Typing Indicator */
+.typing__indicator {
+  font-size: 13px;
+  color: #888;
+  font-style: italic;
+  padding-top: 10px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+  .home__container {
+    padding: 20px;
+  }
+
+  .home__content {
+    width: 90%;
+  }
+
+  .home__header {
+    font-size: 2rem;
+  }
+
+  .input__container {
+    width: 80%;
+  }
+
+  .home__input {
+    width: 100%;
+  }
+
+  .home__cta {
+    width: 80%;
+  }
+
+  .chat__sidebar {
+    display: none;
+  }
+
+  .chat__main {
+    flex: 1;
+  }
+
+  .message__container {
+    height: 60vh;
+  }
 }
